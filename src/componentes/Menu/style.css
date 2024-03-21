@@ -1,0 +1,133 @@
+.icon img {
+    margin-top: 52px;
+    /* Puedes ajustar este valor según sea necesario */
+}
+
+.icon {
+    display: flex;
+    justify-content: space-around;
+}
+
+.left-box ol {
+    list-style-type: none;
+    margin: 30px 0px 0px 0px;
+    padding: 0px 0px 0px 0px;
+}
+
+.button {
+    display: flex;
+    width: 83%;
+    border: none;
+    background-color: transparent;
+    cursor: pointer;
+    align-items: center;
+    justify-content: flex-start;
+    margin: 20px 15px;
+    /* Ajustar el margen vertical */
+    padding: 10px;
+    /* Añadir un poco de relleno al botón */
+}
+
+.button span {
+    margin-left: 20px;
+    /* Ajustar la posición del texto hacia la derecha */
+    font-family: Arial, sans-serif;
+    font-size: 18px;
+    white-space: nowrap;
+    /* Evita que el texto se divida en múltiples líneas */
+    overflow: hidden;
+    /* Oculta el texto que se desborda del botón */
+    text-overflow: ellipsis;
+}
+
+.button img {
+    margin: 5px 10px 5px 15px;
+    /* Ajustar la posición del icono hacia la derecha */
+    width: 20px;
+    height: auto;
+}
+
+.button:hover img {
+    filter: brightness(0) invert(1);
+}
+
+.button:hover {
+    background-color: #3d20f9;
+    transition: filter 0.3s ease;
+    color: white;
+    border-radius: 7px;
+}
+
+/* =================================================================*/
+
+.bottom-div {
+    background-color: #f4f4f4;
+    padding: 20px;
+    border-radius: 10px;
+    margin: 20px; /* Margen alrededor del div */
+}
+
+.bottom-div h1 {
+    margin: 0;
+    color: #2a2a2a;
+    font-size: 14px;
+}
+
+.bottom-div h4 {
+    font-size: 11px;
+    color: #7a7a7a;
+    font-style: oblique;
+    margin: 0;
+    font-weight: normal;
+}
+
+.progress-bar {
+    background-color: #d2d2f1;
+    height: 8px; /* Altura de la barra de progreso */
+    border-radius: 8px; /* Redondea las esquinas */
+    margin-bottom: 10px;
+}
+
+.progressAlmacenamiento {
+    background-color: #4800fe; /* Azul brillante de la barra de progreso */
+    height: 100%;
+    width: 80%; /* Porcentaje de progreso (puedes ajustar según necesites) */
+    border-radius: 8px; /* Redondea las esquinas */
+}
+
+.progressBanda{
+    background-color: #4800fe; /* Azul brillante de la barra de progreso */
+    height: 100%;
+    width: 60%; /* Porcentaje de progreso (puedes ajustar según necesites) */
+    border-radius: 8px; /* Redondea las esquinas */
+}
+
+.administrar-plan-button {
+    background-color: #4800fe; /* Azul brillante del botón */
+    color: white;
+    border: none;
+    padding: 8px 16px; /* Ajusta el padding del botón */
+    border-radius: 15px;
+    cursor: pointer;
+}
+
+.textoAlmacenamiento, .textoBanda{
+    color: #2a2a2a;
+    font-size: 14px;
+}
+
+.gb {
+    font-size: 8px;
+    color: #2a2a2a;
+    margin-left: 50px; /* Mueve el texto a la derecha */
+}
+
+.gbBanda{
+    font-size: 8px;
+    color: #2a2a2a;
+    margin-left: 60px; 
+}
+
+.almacenamiento, .banda-mensual{
+    margin-bottom: 5px;
+}

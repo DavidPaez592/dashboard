@@ -1,0 +1,37 @@
+.container {
+  display: flex;
+  justify-content: space-between;
+  margin: 30px;
+}
+
+.menuIzquierda,
+.contenido {
+  height: 93vh;
+  margin-right: 20px;
+}
+
+.menuIzquierda {
+  width: calc(16% - 10px);
+  background-color: #ffffff;
+  border-radius: 10px;
+}
+
+.contenido {
+  width: calc(83% - 10px);
+  background-color: #ffffff;
+  border-radius: 10px;
+}
+
+/* Media query para dispositivos con ancho igual o menor a 600px */
+@media screen and (max-width: 600px) {
+  .container {
+      flex-direction: column; /* Cambia la dirección del flex container a column */
+  }
+
+  .menuIzquierda,
+  .contenido {
+      width: 100%; /* Ocupar todo el ancho disponible */
+      margin-bottom: 20px; /* Añadir margen inferior para separar los divs */
+      margin-right: 0; /* Eliminar el margen derecho */
+  }
+}
