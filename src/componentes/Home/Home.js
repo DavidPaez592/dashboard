@@ -1,5 +1,6 @@
 import React from "react";
 import Menu from "../Menu/Menu";
+import Dashboard from "../Dashboard/Dashboard";
 import "./style.css";
 
 function Home() {
@@ -8,7 +9,9 @@ function Home() {
       <div className="menuIzquierda">
       <Menu />
       </div>
-      <div className="contenido"></div>
+      <div className="contenido">
+      <Dashboard />
+      </div>
     </div>
   );
 }
