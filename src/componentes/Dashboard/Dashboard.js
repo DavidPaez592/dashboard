@@ -1,4 +1,5 @@
 import React from 'react';
+import { FolderOutlined } from '@ant-design/icons';
 import iconoLibreria from '../../imagenes/iconoLibreria.png';
 import iconoPapelera from '../../imagenes/iconoPapelera.png';
 import iconoCarpeta from "../../imagenes/iconoCarpeta.png";
@@ -6,8 +7,34 @@ import iconoPlayBlanco from "../../imagenes/iconoPlayBlanco.png";
 import iconoLupa from "../../imagenes/iconoLupa.png";
 import './style.css';
 
-
 function Dashboard() {
+    const renderTable = () => {
+        return (
+            <table className="dashboardTable">
+                <thead>
+                    <tr>
+                        <th>
+                            <input type="checkbox" />
+                        </th>
+                        <th className="expandirNombre">Nombre</th>
+                        <th className="alinearDerecha">Videos</th>
+                        <th className="alinearDerecha">Tamaño</th>
+                        <th className="alinearDerecha">Última modificación</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td></td>
+                        <td><FolderOutlined />Texto Genérico</td>
+                        <td>Texto Genérico</td>
+                        <td>Texto Genérico</td>
+                        <td>Texto Genérico</td>
+                    </tr>
+                </tbody>
+            </table>
+        );
+    };
+
     return (
         <div className='divBorde'>
             <div className='superior'>
@@ -41,10 +68,10 @@ function Dashboard() {
                 </div>
             </div>
             <div className='contenidoDashboard'>
-
+                {renderTable()}
             </div>
         </div>
     )
 }
 
-export default Dashboard
+export default Dashboard;
