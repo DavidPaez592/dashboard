@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import iconoPlay from "../../imagenes/iconoPlay.png";
 import iconoDashboard from "../../imagenes/iconoDashboard.png";
 import iconoCarpeta from "../../imagenes/iconoCarpeta.png";
@@ -7,7 +7,13 @@ import iconoAnalytics from "../../imagenes/iconoAnalytics.png";
 import iconoConfig from "../../imagenes/iconoConfig.png";
 import "./style.css";
 
-function Menu() {
+function Menu({ onVideosClick, showHomeButton }) {
+    const [videosButtonActive, setVideosButtonActive] = useState(false);
+
+    const handleVideosButtonClick = () => {
+        setVideosButtonActive(true);
+        onVideosClick();
+    };
     return (
         <div className="left-box">
             <div className="icon">
@@ -21,7 +27,7 @@ function Menu() {
                     </button>
                 </li>
                 <li>
-                    <button className="button">
+                    <button className={`button ${showHomeButton ? '' : videosButtonActive ? 'active' : ''}`} onClick={handleVideosButtonClick}>
                         <img src={iconoCarpeta} alt="Videos" />
                         <span>Videos</span>
                     </button>

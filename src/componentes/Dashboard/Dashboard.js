@@ -1,14 +1,34 @@
-import React, { useState } from 'react';
-import { FolderOutlined } from '@ant-design/icons';
+import React, { useState, useEffect } from 'react';
+import { FolderOutlined, PlayCircleOutlined } from '@ant-design/icons';
 import iconoLibreria from '../../imagenes/iconoLibreria.png';
 import iconoPapelera from '../../imagenes/iconoPapelera.png';
 import iconoCarpeta from "../../imagenes/iconoCarpeta.png";
 import iconoPlayBlanco from "../../imagenes/iconoPlayBlanco.png";
 import iconoLupa from "../../imagenes/iconoLupa.png";
+import iconoRegreso from "../../imagenes/iconoRegreso.png";
 import './style.css';
 
-function Dashboard() {
+function Dashboard({ textoUltimaModificacionVideos, textoUltimaModificacionTamaño, nombres, tamaños, duracion }) {
     const [selectedRows, setSelectedRows] = useState([]);
+    const [showLibraryButton, setShowLibraryButton] = useState(true);
+    const [showTrashButton, setShowTrashButton] = useState(true);
+    const [showHomeButton, setShowHomeButton] = useState(false);
+
+    const handleHomeClick = () => {
+        window.location.href = '/';
+    };
+
+    useEffect(() => {
+        if (textoUltimaModificacionVideos === "Videos") {
+            setShowLibraryButton(true);
+            setShowTrashButton(true);
+            setShowHomeButton(false);
+        } else {
+            setShowLibraryButton(false);
+            setShowTrashButton(false);
+            setShowHomeButton(true);
+        }
+    }, [textoUltimaModificacionVideos]);
 
     const handleRowClick = (index) => {
         const selectedIndex = selectedRows.indexOf(index);
@@ -32,36 +52,6 @@ function Dashboard() {
 
     const renderTableRow = (index) => {
         const isSelected = selectedRows.indexOf(index) !== -1;
-
-        // Define los datos para cada fila
-        const nombres = [
-            "Afiliado Master",
-            "BeMaster",
-            "Comizzión",
-            "Creador de Contenido",
-            "Exportados Wil",
-            "Afiliado Master",
-            "BeMaster",
-            "Comizzión",
-            "Creador de Contenido",
-            "Exportados Wil"
-        ];
-
-        const videos = [8, 21, 10, 2, 14, 6, 30, 2, 8, 14];
-
-        const tamanos = [
-            "7.3 GB",
-            "1.4 GB",
-            "284 MB",
-            "4.3 GB",
-            "500 MB",
-            "7.3 GB",
-            "1.4 GB",
-            "284 MB",
-            "4.3 GB",
-            "500 MB"
-        ];
-
         const ultimasModificaciones = [
             "30/may/2023",
             "22/jun/2022",
@@ -75,7 +65,6 @@ function Dashboard() {
             "5/abr/2023"
         ];
 
-        // Crea la fila con los datos correspondientes al índice proporcionado
         return (
             <tr
                 key={index}
@@ -85,9 +74,13 @@ function Dashboard() {
                 <td>
                     <input type="checkbox" checked={isSelected} onChange={() => { }} />
                 </td>
-                <td className="expandirNombre"><FolderOutlined />{nombres[index]}</td>
-                <td className="alinearCentro">{videos[index]}</td>
-                <td className="alinearCentro">{tamanos[index]}</td>
+                <td className="expandirNombre">
+                    {textoUltimaModificacionVideos === "Videos" ? <FolderOutlined /> : <PlayCircleOutlined />}
+                    {nombres[index]}
+                </td>
+
+                <td className="alinearCentro">{tamaños[index]}</td>
+                <td className="alinearCentro">{duracion[index]}</td>
                 <td className="alinearCentro">{ultimasModificaciones[index]}</td>
             </tr>
         );
@@ -105,26 +98,52 @@ function Dashboard() {
         <div className='divBorde'>
             <div className='superior'>
                 <div className='leftItems'>
-                    <button className="buttonDashboardLeft">
-                        <img src={iconoLibreria} style={{ color: "#4800fe" }} alt="Biblioteca" />
-                        <span style={{ color: "#4800fe", fontWeight: "bold" }}>Biblioteca</span>
-                        <div className="lineaDebajo"></div>
-                    </button>
-                    <button className="buttonDashboardLeft">
-                        <img src={iconoPapelera} alt="Papelera<" />
-                        <span>Papelera</span>
-                    </button>
+                    {showLibraryButton && (
+                        <button className="buttonDashboardLeft">
+                            <img src={iconoLibreria} style={{ color: "#4800fe" }} alt="Biblioteca" />
+                            <span style={{ color: "#4800fe", fontWeight: "bold" }}>Biblioteca</span>
+                            <div className="lineaDebajo"></div>
+                        </button>
+                    )}
+                    {showTrashButton && (
+                        <button className="buttonDashboardLeft">
+                            <img src={iconoPapelera} alt="Papelera<" />
+                            <span>Papelera</span>
+                        </button>
+                    )}
+                    {showHomeButton && (
+                        <button className="buttonDashboardLeft" onClick={handleHomeClick}>
+                            <img src={iconoRegreso} style={{
+                                color: "#4800fe",
+                                width: "45px",
+                                height: "40px"
+                            }} alt="Biblioteca" />
+                            <span style={{
+                                color: "black",
+                                fontSize: "20px"
+                            }}>Home /</span> <span style={{
+                                fontWeight: "bold",
+                                color: "black",
+                                fontSize: "20px"
+                            }}>BeMaster</span>
+                        </button>
+                    )}
                 </div>
                 <div className='rightItems'>
-                    <button className="buttonDashboardRight">
-                        <img src={iconoCarpeta} alt="Nueva carpeta<" className='imagenesDashboardTop' />
-                        <span>Nueva carpeta</span>
-                    </button>
-                    <button className="buttonDashboardRight" style={{ backgroundColor: "#4800fe" }}>
-                        <img src={iconoPlayBlanco} alt="Nuevo video" className='imagenesDashboardTop' />
-                        <span style={{ color: "white" }}>Nuevo video</span>
-                    </button>
+                    {textoUltimaModificacionVideos !== "Tamaño" && (
+                        <button className="buttonDashboardRight">
+                            <img src={iconoCarpeta} alt="Nueva carpeta<" className='imagenesDashboardTop' />
+                            <span>Nueva carpeta</span>
+                        </button>
+                    )}
+                    {textoUltimaModificacionVideos !== "Tamaño" && (
+                        <button className="buttonDashboardRight" style={{ backgroundColor: "#4800fe" }}>
+                            <img src={iconoPlayBlanco} alt="Nuevo video" className='imagenesDashboardTop' />
+                            <span style={{ color: "white" }}>Nuevo video</span>
+                        </button>
+                    )}
                 </div>
+
             </div>
             <div className='busqueda'>
                 <div className="searchBar">
@@ -132,7 +151,7 @@ function Dashboard() {
                     <span className="separator">|</span>
                     <input type="text" placeholder="Buscar Video" className="searchInput" />
                 </div>
-            </div>
+            </div> 
             <div className='contenidoDashboard'>
                 <table className="dashboardTable">
                     <thead>
@@ -141,8 +160,8 @@ function Dashboard() {
                                 <input type="checkbox" />
                             </th>
                             <th className="expandirNombre">Nombre</th>
-                            <th className="alinearDerecha">Videos</th>
-                            <th className="alinearDerecha">Tamaño</th>
+                            <th className="alinearDerecha">{textoUltimaModificacionVideos}</th>
+                            <th className="alinearDerecha">{textoUltimaModificacionTamaño}</th>
                             <th className="alinearDerecha">Última modificación</th>
                         </tr>
                     </thead>
@@ -150,6 +169,7 @@ function Dashboard() {
                         {renderTableRows()}
                     </tbody>
                 </table>
+                <hr style={{ width: '100%', borderTop: '1px solid #ccc', marginTop: "10%" }} />
             </div>
         </div>
     );

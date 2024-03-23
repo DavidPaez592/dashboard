@@ -58,6 +58,17 @@
     border-radius: 7px;
 }
 
+@media screen and (max-width: 600px) {
+    .superior {
+        flex-direction: column;
+    }
+
+    .rightItems {
+        margin-top: 20px; /* Agrega un espacio entre los botones */
+    }
+}
+
+
 /* =================================================================*/
 
 .bottom-div {
@@ -130,4 +141,22 @@
 
 .almacenamiento, .banda-mensual{
     margin-bottom: 2px;
+}
+
+/* Aplica estilos cuando el botón está activo */
+.button.active {
+    background-color: #3d20f9; /* Color de fondo cuando el botón está activo */
+    color: white; /* Color del texto cuando el botón está activo */
+    border-radius: 7px; /* Redondea las esquinas cuando el botón está activo */
+}
+
+/* Mantén el color de fondo en hover cuando el botón está activo y elimina la transición */
+.button.active:hover {
+    background-color: #3d20f9; /* Mantiene el color de fondo en hover cuando el botón está activo */
+    transition: none; /* Elimina la transición en hover cuando el botón está activo */
+}
+
+/* Ajusta el color de la imagen cuando el botón está activo */
+.button.active img {
+    filter: brightness(0) invert(1); /* Invierte los colores del icono cuando el botón está activo */
 }

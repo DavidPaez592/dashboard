@@ -23,15 +23,22 @@
 }
 
 /* Media query para dispositivos con ancho igual o menor a 600px */
+/* Media query para dispositivos con ancho igual o menor a 600px */
 @media screen and (max-width: 600px) {
   .container {
-      flex-direction: column; /* Cambia la dirección del flex container a column */
+    flex-direction: column; /* Cambia la dirección del flex container a column */
   }
 
   .menuIzquierda,
   .contenido {
-      width: 100%; /* Ocupar todo el ancho disponible */
-      margin-bottom: 20px; /* Añadir margen inferior para separar los divs */
-      margin-right: 0; /* Eliminar el margen derecho */
+    width: 100%; /* Ocupar todo el ancho disponible */
+    height: 100%;
+    margin-bottom: 20px; /* Añadir margen inferior para separar los divs */
+    margin-right: 0; /* Eliminar el margen derecho */
+  }
+
+  .contenido {
+    flex-grow: 1; /* Hace que el contenido ocupe todo el espacio disponible en la columna */
   }
 }
+
