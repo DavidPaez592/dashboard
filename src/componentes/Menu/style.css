@@ -10,7 +10,7 @@
 
 .left-box ol {
     list-style-type: none;
-    margin: 52px 0px 0px 0px;
+    margin: 28px 0px 0px 0px;
     padding: 0px 0px 0px 0px;
 }
 
@@ -65,6 +65,7 @@
     padding: 20px;
     border-radius: 10px;
     margin: 20px; /* Margen alrededor del div */
+    margin-top: 86px;
 }
 
 .bottom-div h1 {
@@ -85,7 +86,6 @@
     background-color: #d2d2f1;
     height: 8px; /* Altura de la barra de progreso */
     border-radius: 8px; /* Redondea las esquinas */
-    margin-bottom: 10px;
 }
 
 .progressAlmacenamiento {
@@ -129,5 +129,5 @@
 }
 
 .almacenamiento, .banda-mensual{
-    margin-bottom: 5px;
+    margin-bottom: 2px;
 }
